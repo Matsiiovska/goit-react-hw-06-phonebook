@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialFilterState = '';//початкове значення
+const inFilterState = '';//початкове значення
 
 const filterSlice = createSlice({
   name: 'filter',
-  initialState: initialFilterState, 
+  initialState: inFilterState, 
   reducers: {
     changeFilter(_, action) {
       return action.payload; // обновлення

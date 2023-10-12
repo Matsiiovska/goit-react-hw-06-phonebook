@@ -25,12 +25,12 @@ const contactsSlice = createSlice({
         payload: { id: nanoid(), ...newContact },
       };
     },
-    removeContact(state, action) {
-      const index = state.items.findIndex(
-        contact => contact.id !== action.payload
-      );
-      state.items.splice(index, 1); 
-    },
+removeContact: (state, action) => {
+  const contactId = action.payload;
+    console.log('Removing contact with ID:', contactId); // Додайте цей рядок
+
+  state.items = state.items.filter(contact => contact.id !== contactId);
+},
   },
 });
 

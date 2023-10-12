@@ -3,26 +3,31 @@ import { List, Item, Button } from './ContactList.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { getVisibleContacts } from 'redux/selectors';
 import { removeContact } from 'redux/contactsSlice';
-// список контактів
+
 const ContactList = () => {
   const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(removeContact());
+
+  const handleDelete = (contactId) => {
+          console.log('Deleting contact with ID:', contactId);
+    dispatch(removeContact(contactId));
+  console.log('Contacts:', contacts);
+
+
+  };
+
   return (
     <List>
       {contacts.map(contact => (
         <Item key={contact.id}>
           {contact.name + ' : ' + contact.number}
-          {
-            // Кнопка видалення контакту
-            <Button
-              type="button"
-              name="delete"
+          <Button
+            type="button"
+            name="delete"
             onClick={() => handleDelete(contact.id)}
-            >
-              delete
-            </Button>
-          }
+          >
+            delete
+          </Button>
         </Item>
       ))}
     </List>
@@ -30,3 +35,8 @@ const ContactList = () => {
 };
 
 export default ContactList;
+
+
+
+
+
